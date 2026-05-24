@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Developer Portfolio</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #000;
+      font-family: Inter, sans-serif;
+    }
+
+    .panel {
+      transition:
+        width 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.55s ease,
+        background-color 0.3s ease;
+
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .panel-content {
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+
+      transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+    }
+
+    .panel.active .panel-content {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+      transition-delay: 0.2s;
+    }
+
+    .panel-title {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      letter-spacing: 0.25em;
+    }
+
+    .panel:hover {
+      transform: scale(1.01);
+    }
+
+    .panel-content-scroll {
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+
+    .panel-content-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .panel-content-scroll::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.2);
+      border-radius: 999px;
+    }
+
+    /* =========================
+       TECH BUTTONS
+    ========================= */
+
+    .tech-item {
+      transition:
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease;
+
+      border: 1px solid transparent;
+    }
+
+    .tech-item:hover {
+      transform: translateY(-4px);
+    }
+
+    .tech-item.active-tech {
+      border-color: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* =========================
+       DESCRIPTION ANIMATION
+    ========================= */
+
+    .tech-description {
+      opacity: 1;
+      transform: translateY(0);
+
+      transition:
+        opacity 0.35s ease,
+        transform 0.35s ease;
+    }
+
+    .tech-description.hidden-text {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    @media (max-width: 768px) {
+      body {
+        overflow: auto;
+      }
+
+      .panel-title {
+        writing-mode: initial;
+        transform: none;
+      }
+
+      .panels-wrapper {
+        flex-direction: column;
+      }
+
+      .panel {
+        width: 100% !important;
+        height: 33.333%;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-black text-white">
+
+  <main class="h-screen w-screen p-4 flex flex-col gap-4">
+
+    <!-- TOP -->
+    <section
+      class="h-[20vh] rounded-2xl bg-black border border-white/10 flex items-center px-8"
+    >
+      <h1 class="text-4xl md:text-6xl font-black tracking-tight leading-none">
+        Hello Wellfound!<span class="text-cyan-400">(Alex.)</span>
+      </h1>
+    </section>
+
+    <!-- PANELS -->
+    <section class="panels-wrapper h-[80vh] flex gap-4">
+
+      <!-- ================= DESIGN ================= -->
+
+      <div
+        class="panel active w-[60%] bg-cyan-400 rounded-2xl p-6 flex items-end md:items-start justify-between"
+        data-panel
+      >
+
+        <!-- TITLE -->
+        <div class="z-10">
+          <h2 class="panel-title md:text-2xl text-lg font-black text-black">
+            DESIGN
+          </h2>
+        </div>
+
+        <!-- CONTENT -->
+        <div
+          class="panel-content panel-content-scroll h-full w-full flex flex-col justify-between ml-6"
+        >
+
+          <!-- ICONS -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2">
+
+            <button
+              class="tech-item bg-white/20 rounded-xl p-4 flex items-center justify-center h-24"
+              data-design="photoshop"
+            >
+              <img src="assets/photoshop.png" class="h-10 object-contain" />
+            </button>
+
+            <button
+              class="tech-item bg-white/20 rounded-xl p-4 flex items-center justify-center h-24"
+              data-design="corel"
+            >
+              <img src="assets/corel.png" class="h-10 object-contain" />
+            </button>
+
+            <button
+              class="tech-item bg-white/20 rounded-xl p-4 flex items-center justify-center h-24"
+              data-design="illustrator"
+            >
+              <img src="assets/illustrator.png" class="h-10 object-contain" />
+            </button>
+
+            <button
+              class="tech-item bg-white/20 rounded-xl p-4 flex items-center justify-center h-24"
+              data-design="figma"
+            >
+              <img src="assets/figma.png" class="h-10 object-contain" />
+            </button>
+
+          </div>
+
+          <!-- DESCRIPTION -->
+          <div
+            id="design-description"
+            class="tech-description mt-8 max-w-2xl"
+          >
+            <h3 class="text-2xl font-black text-black mb-4">
+              Design Experience
+            </h3>
+
+            <p class="text-black/80 leading-relaxed">
+              Select any technology icon to explore my design skills,
+              practical experience and creative workflow.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ================= FRONTEND ================= -->
+
+      <div
+        class="panel w-[20%] bg-blue-600 rounded-2xl p-6 flex items-end md:items-start justify-between"
+        data-panel
+      >
+
+        <div class="z-10">
+          <h2 class="panel-title md:text-2xl text-lg font-black text-white">
+            FRONTEND
+          </h2>
+        </div>
+
+        <div
+          class="panel-content panel-content-scroll h-full w-full flex flex-col justify-between ml-6"
+        >
+
+          <!-- ICONS -->
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-2">
+
+            <button
+              class="tech-item bg-white/10 rounded-xl p-4 flex items-center justify-center h-24"
+              data-frontend="htmlcss"
+            >
+              <img src="assets/html.png" class="h-10 object-contain" />
+            </button>
+
+            <button
+              class="tech-item bg-white/10 rounded-xl p-4 flex items-center justify-center h-24"
+              data-frontend="js"
+            >
+              <img src="assets/js.png" class="h-10 object-contain" />
+            </button>
+
+            <button
+              class="tech-item bg-white/10 rounded-xl p-4 flex items-center justify-center h-24"
+              data-frontend="flutter"
+            >
+              <img src="assets/flutter.png" class="h-10 object-contain" />
+            </button>
+
+            <button
+              class="tech-item bg-white/10 rounded-xl p-4 flex items-center justify-center h-24"
+              data-frontend="swift"
+            >
+              <img src="assets/swift.png" class="h-10 object-contain" />
+            </button>
+
+          </div>
+
+          <!-- DESCRIPTION -->
+          <div
+            id="frontend-description"
+            class="tech-description mt-8 max-w-2xl"
+          >
+            <h3 class="text-2xl font-black text-white mb-4">
+              Frontend Experience
+            </h3>
+
+            <p class="text-white/80 leading-relaxed">
+              Select any technology icon to explore frontend projects,
+              frameworks and practical development experience.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ================= BACKEND ================= -->
+
+      <div
+        class="panel w-[20%] bg-[#0b1120] rounded-2xl p-6 flex items-end md:items-start justify-between"
+        data-panel
+      >
+
+        <div class="z-10">
+          <h2 class="panel-title md:text-2xl text-lg font-black text-white">
+            BACKEND
+          </h2>
+        </div>
+
+        <div
+          class="panel-content panel-content-scroll h-full w-full flex flex-col justify-between ml-6"
+        >
+
+          <!-- ICONS -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2">
+
+            <button
+              class="tech-item bg-white/10 rounded-xl p-4 flex items-center justify-center h-24"
+              data-backend="fastapi"
+            >
+              <img src="assets/fastapi.png" class="h-10 object-contain" />
+            </button>
+
+            <button
+              class="tech-item bg-white/10 rounded-xl p-4 flex items-center justify-center h-24"
+              data-backend="python"
+            >
+              <img src="assets/python.png" class="h-10 object-contain" />
+            </button>
+
+            <button
+              class="tech-item bg-white/10 rounded-xl p-4 flex items-center justify-center h-24"
+              data-backend="c"
+            >
+              <img src="assets/c.png" class="h-10 object-contain" />
+            </button>
+
+            <button
+              class="tech-item bg-white/10 rounded-xl p-4 flex items-center justify-center h-24"
+              data-backend="cpp"
+            >
+              <img src="assets/cpp.png" class="h-10 object-contain" />
+            </button>
+
+          </div>
+
+          <!-- DESCRIPTION -->
+          <div
+            id="backend-description"
+            class="tech-description mt-8 max-w-2xl"
+          >
+            <h3 class="text-2xl font-black text-white mb-4">
+              Backend Experience
+            </h3>
+
+            <p class="text-white/80 leading-relaxed">
+              Select any technology icon to explore backend architecture,
+              APIs and systems programming experience.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script>
+
+    /* =========================
+       ACCORDION
+    ========================= */
+
+    const panels = document.querySelectorAll("[data-panel]");
+
+    function resetPanels() {
+      panels.forEach((panel) => {
+        panel.classList.remove("active");
+        panel.style.width = "33.333%";
+      });
+    }
+
+    function activatePanel(activePanel) {
+      panels.forEach((panel) => {
+
+        panel.classList.remove("active");
+
+        if (panel === activePanel) {
+          panel.style.width = "60%";
+          panel.classList.add("active");
+        } else {
+          panel.style.width = "20%";
+        }
+
+      });
+    }
+
+    panels.forEach((panel) => {
+
+      panel.addEventListener("click", () => {
+
+        const isActive = panel.classList.contains("active");
+
+        if (isActive) {
+          resetPanels();
+        } else {
+          activatePanel(panel);
+        }
+
+      });
+
+    });
+
+
+    /* ===================================================
+       UNIVERSAL TECH SWITCHER
+    =================================================== */
+
+    function initTechPanel({
+      buttonSelector,
+      descriptionId,
+      defaultContent,
+      texts
+    }) {
+
+      const buttons = document.querySelectorAll(buttonSelector);
+      const description = document.getElementById(descriptionId);
+
+      let activeKey = null;
+
+      buttons.forEach((button) => {
+
+        button.addEventListener("click", (e) => {
+
+          e.stopPropagation();
+
+          const key = Object.values(button.dataset)[0];
+
+          /* повторный клик -> сброс */
+
+          if (activeKey === key) {
+
+            activeKey = null;
+
+            buttons.forEach(btn =>
+              btn.classList.remove("active-tech")
+            );
+
+            description.classList.add("hidden-text");
+
+            setTimeout(() => {
+
+              description.innerHTML = defaultContent;
+              description.classList.remove("hidden-text");
+
+            }, 200);
+
+            return;
+          }
+
+          activeKey = key;
+
+          buttons.forEach(btn =>
+            btn.classList.remove("active-tech")
+          );
+
+          button.classList.add("active-tech");
+
+          description.classList.add("hidden-text");
+
+          setTimeout(() => {
+
+            description.innerHTML = texts[key];
+            description.classList.remove("hidden-text");
+
+          }, 200);
+
+        });
+
+      });
+
+    }
+
+
+    /* ================= DESIGN ================= */
+
+    initTechPanel({
+
+      buttonSelector: "[data-design]",
+
+      descriptionId: "design-description",
+
+      defaultContent: `
+        <h3 class="text-2xl font-black text-black mb-4">
+          Design Experience
+        </h3>
+
+        <p class="text-black/80 leading-relaxed">
+          Select any technology icon to explore my design skills,
+          practical experience and creative workflow.
+        </p>
+      `,
+
+      texts: {
+
+        photoshop: `
+          <h3 class="text-2xl font-black text-black mb-4">
+            Photoshop
+          </h3>
+
+          <p class="text-black/80 leading-relaxed">
+            My experience started with a simple interest in changing backgrounds, but next projects raised my opportunities very fast. Later, I worked at a local design company, where I was successfully creating unique designs for cups, t-shirts, various souvenir items, and artistic portraits.
+          </p>
+        `,
+
+        corel: `
+          <h3 class="text-2xl font-black text-black mb-4">
+            CorelDRAW
+          </h3>
+
+          <p class="text-black/80 leading-relaxed">
+            I was creating complex CGI-vector graphical projects assigned and experienced by my HR. My work ranged from drawing simple lines and geometric shapes to delivering professional layouts for custom logos, corporate brand identities, and high-quality business cards.
+          </p>
+        `,
+
+        illustrator: `
+          <h3 class="text-2xl font-black text-black mb-4">
+            Illustrator
+          </h3>
+
+          <p class="text-black/80 leading-relaxed">
+            During my practice, I was focused on typography and vector art. I designed several unique fonts from scratch with my own custom design language, and also successfully created some complex artistic forms inspired by famous stained world design shapes.
+          </p>
+        `,
+
+        figma: `
+          <h3 class="text-2xl font-black text-black mb-4">
+            Figma
+          </h3>
+
+          <p class="text-black/80 leading-relaxed">
+            I have completed many diverse Figma projects dedicated to my college activities and teamwork. In addition, I spent a lot of time working on individual UI/UX concepts only for myself as a valuable experience to master layouts and components.
+          </p>
+        `
+      }
+
+    });
+
+
+    /* ================= FRONTEND ================= */
+
+    initTechPanel({
+
+      buttonSelector: "[data-frontend]",
+
+      descriptionId: "frontend-description",
+
+      defaultContent: `
+        <h3 class="text-2xl font-black text-white mb-4">
+          Frontend Experience
+        </h3>
+
+        <p class="text-white/80 leading-relaxed">
+          Select any technology icon to explore frontend projects,
+          frameworks and practical development experience.
+        </p>
+      `,
+
+      texts: {
+
+        htmlcss: `
+          <h3 class="text-2xl font-black text-white mb-4">
+            HTML / CSS
+          </h3>
+
+          <p class="text-white/80 leading-relaxed">
+            I have completed many practical college exercises and real-world layout templates. I can build interfaces very fast with modern AI assistance, or work a bit more slowly but entirely with my own hands, ensuring high fidelity and pixel-perfect results.
+          </p>
+        `,
+
+        js: `
+          <h3 class="text-2xl font-black text-white mb-4">
+            JavaScript
+          </h3>
+
+          <p class="text-white/80 leading-relaxed">
+            I worked deeply with JavaScript and React Native to develop a complex multiplatform mobile project. It was a fully functional account manager app cleanly connected to a Supabase database for real-time user data synchronization and secure authorization.
+          </p>
+        `,
+
+        flutter: `
+          <h3 class="text-2xl font-black text-white mb-4">
+            Flutter
+          </h3>
+
+          <p class="text-white/80 leading-relaxed">
+            I worked with multiplatform development using Flutter framework. I succeeded in creating my own fully functional cross-platform applications for a personal cabinet, as well as dedicated movie and music apps featuring interactive user history and likes screens.
+          </p>
+        `,
+
+        swift: `
+          <h3 class="text-2xl font-black text-white mb-4">
+            Swift
+          </h3>
+
+          <p class="text-white/80 leading-relaxed">
+            I have experience in creating iOS native applications from scratch using Swift. I developed smooth interfaces, managed local application data, and successfully managed the deployment and porting processes using the iTunes environment and modern Apple developer tools.
+          </p>
+        `
+      }
+
+    });
+
+
+    /* ================= BACKEND ================= */
+
+    initTechPanel({
+
+      buttonSelector: "[data-backend]",
+
+      descriptionId: "backend-description",
+
+      defaultContent: `
+        <h3 class="text-2xl font-black text-white mb-4">
+          Backend Experience
+        </h3>
+
+        <p class="text-white/80 leading-relaxed">
+          Select any technology icon to explore backend architecture,
+          APIs and systems programming experience.
+        </p>
+      `,
+
+      texts: {
+
+        fastapi: `
+          <h3 class="text-2xl font-black text-white mb-4">
+            FastAPI
+          </h3>
+
+          <p class="text-white/80 leading-relaxed">
+            I worked with FastAPI framework to build fast, asynchronous backend services. My main task was to cleanly connect robust web APIs with PostgreSQL database systems and write clean, optimized NativeSQL queries on Python for maximum data performance.
+          </p>
+        `,
+
+        python: `
+          <h3 class="text-2xl font-black text-white mb-4">
+            Python
+          </h3>
+
+          <p class="text-white/80 leading-relaxed">
+            I built advanced CLI task managers and automated tools. I also created powerful, responsive bots for Telegram using Telethon and Pyrogram frameworks, and frequently worked with the built-in SQLite library to handle local database structures efficiently.
+          </p>
+        `,
+
+        c: `
+          <h3 class="text-2xl font-black text-white mb-4">
+            C
+          </h3>
+
+          <p class="text-white/80 leading-relaxed">
+            I spent a lot of time solving complex algorithmic and logical tasks. I created multiple efficient applications with a simple console UI, gaining a deep, fundamental understanding of all variable types, complex conditional structures, and performance loops.
+          </p>
+        `,
+
+        cpp: `
+          <h3 class="text-2xl font-black text-white mb-4">
+            C++
+          </h3>
+
+          <p class="text-white/80 leading-relaxed">
+            I leveled up my programming skills by working with object-oriented concepts in C++. I actively worked with custom structures, advanced classes, encapsulation, and solved complex logical engineering tasks that required high computing performance and clean memory management.
+          </p>
+        `
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
